@@ -1,4 +1,4 @@
-package com.ablog.controller;
+package com.ablog.controller.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.ablog.constant.LogActions;

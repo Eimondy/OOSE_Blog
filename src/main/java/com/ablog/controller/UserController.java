@@ -2,6 +2,7 @@ package com.ablog.controller;
 
 import com.ablog.constant.LogActions;
 import com.ablog.controller.admin.AuthController;
+import com.ablog.dto.cond.CommentCond;
 import com.ablog.model.UserDomain;
 import com.ablog.service.log.LogService;
 import com.ablog.service.user.UserService;
@@ -39,8 +40,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Api("用户管理")
 @Controller
@@ -50,6 +53,12 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ContentService contentService;
+
+    @Autowired
+    private CommentService commentService;
 
     @Autowired
     private LogService logService;
@@ -67,6 +76,85 @@ public class UserController extends BaseController {
     @GetMapping("/user/register")
     public String registerPage(){
         return "user/register";
+    }
+
+    @GetMapping("/user/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute(WebConst.LOGIN_SESSION_KEY);
+        return "redirect:/";
+    }
+
+    @GetMapping("/user/profile")
+    public String profilePage(HttpServletRequest request){
+        return "/user/profile";
+    }
+
+    @GetMapping("/user/profile/collect")
+    public String collectPage(
+            @ApiParam(name = "page", value = "页数", required = false)
+            @RequestParam(name = "page", required = false, defaultValue = "1")
+                    int page,
+            @ApiParam(name = "limit", value = "每页条数", required = false)
+            @RequestParam(name = "limit", required = false, defaultValue = "15")
+                    int limit,
+            HttpServletRequest request
+    ){
+        UserDomain userInfo = (UserDomain) request.getSession().getAttribute("login_user");
+        List<Integer> cids = userService.getCollectByUserId(userInfo.getUid());
+        List<ContentDomain> articles = new ArrayList<>();
+        for(Integer cid : cids){
+            ContentDomain article = contentService.getArticleById(cid);
+            articles.add(article);
+        }
+
+        ContentCond cond = new ContentCond();
+
+        PageInfo<ContentDomain> as = contentService.getArticlesByCond(new ContentCond(), page, limit);
+
+        request.setAttribute("articles",articles);
+        return "/user/profile_collect";
+    }
+
+    @GetMapping("/user/profile/subscribe")
+    public String subscribePage(
+            @ApiParam(name = "page", value = "页数", required = false)
+            @RequestParam(name = "page", required = false, defaultValue = "1")
+                    int page,
+            @ApiParam(name = "limit", value = "每页条数", required = false)
+            @RequestParam(name = "limit", required = false, defaultValue = "15")
+                    int limit,
+            HttpServletRequest request
+    ){
+        UserDomain userInfo = (UserDomain) request.getSession().getAttribute("login_user");
+        List<Integer> cids = userService.getSubscribeByUserId(userInfo.getUid());
+        List<ContentDomain> articles = new ArrayList<>();
+        for(Integer idx : cids){
+            ContentDomain article = contentService.getArticleById(idx);
+            articles.add(article);
+        }
+        request.setAttribute("articles",articles);
+        return "/user/profile_subscribe";
+    }
+
+    @GetMapping("/user/profile/comment")
+    public String commentPage(
+            @ApiParam(name = "page", value = "页数", required = false)
+            @RequestParam(name = "page", required = false, defaultValue = "1")
+                    int page,
+            @ApiParam(name = "limit", value = "每页条数", required = false)
+            @RequestParam(name = "limit", required = false, defaultValue = "15")
+                    int limit,
+            HttpServletRequest request
+    ){
+        UserDomain user = (UserDomain) request.getSession().getAttribute("login_user");
+        List<Integer> coids = commentService.getCommentsByUserId(user.getUid());
+        List<CommentDomain> comments= new ArrayList<>();
+        for(Integer coid : coids){
+            CommentDomain comment = commentService.getCommentById(coid);
+            comments.add(comment);
+        }
+        request.setAttribute("comments", comments);
+        return "/user/profile_comment";
     }
 
     @ApiOperation("游客登录")
@@ -89,6 +177,8 @@ public class UserController extends BaseController {
         try {
             // 调用Service登录方法
             UserDomain userInfo = userService.login(username, password);
+            if(userInfo.getGroupName().equals("manager"))
+                return APIResponse.fail("此为游客登录入口！");
             // 设置用户信息session
             request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, userInfo);
             // 判断是否勾选记住我
@@ -152,6 +242,70 @@ public class UserController extends BaseController {
         userDomain.setGroupName("visitor");
         // 新增用户
         userService.insertUserInfo(userDomain);
+        return APIResponse.success();
+    }
+
+    @RequestMapping(value = "/user/collect", method = RequestMethod.POST)
+    @ResponseBody
+    public APIResponse collectArticle(
+            @RequestBody Map<String, String> map
+    ){
+        int uid = Integer.parseInt(map.get("uid"));
+        int cid = Integer.parseInt(map.get("cid"));
+        List<Integer> curCollects = userService.getCollectByUserId(uid);
+        for(Integer ccid : curCollects){
+            if(ccid == cid )
+                return APIResponse.fail("已收藏本文章。");
+        }
+        userService.insertUserCollect(uid, cid);
+        return APIResponse.success();
+    }
+
+    @RequestMapping(value = "/user/subscribe", method = RequestMethod.POST)
+    @ResponseBody
+    public APIResponse subscribeArticle(
+            @RequestBody Map<String, String> map
+    ){
+        int uid = Integer.parseInt(map.get("uid"));
+        int cid = Integer.parseInt(map.get("cid"));
+        List<Integer> curSubscribe = userService.getSubscribeByUserId(uid);
+        for(Integer ccid : curSubscribe){
+            if(ccid == cid )
+                return APIResponse.fail("已订阅本文章。");
+        }
+        userService.insertUserSubscribe(uid, cid);
+        return APIResponse.success();
+    }
+
+    @RequestMapping(value = "/user/notcollect", method = RequestMethod.POST)
+    @ResponseBody
+    public APIResponse notCollectArticle(
+            @RequestBody Map<String, String> map
+    ){
+        int uid = Integer.parseInt(map.get("uid"));
+        int cid = Integer.parseInt(map.get("cid"));
+        userService.deleteUserCollect(uid, cid);
+        return APIResponse.success();
+    }
+
+    @RequestMapping(value = "/user/notsubscribe", method = RequestMethod.POST)
+    @ResponseBody
+    public APIResponse notSubscribeArticle(
+            @RequestBody Map<String, String> map
+    ){
+        int uid = Integer.parseInt(map.get("uid"));
+        int cid = Integer.parseInt(map.get("cid"));
+        userService.deleteUserSubscribe(uid, cid);
+        return APIResponse.success();
+    }
+
+    @RequestMapping(value = "/user/comment/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public APIResponse deleteComment(
+            @RequestBody Map<String, String> map
+    ){
+        int coid = Integer.parseInt(map.get("coid"));
+        commentService.deleteComment(coid);
         return APIResponse.success();
     }
 }

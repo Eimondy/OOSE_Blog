@@ -79,7 +79,7 @@ public class Commons {
      * @return
      */
     public static String blogPermalink(Integer cid) {
-        return site_url("/blog/article/" + cid.toString());
+        return site_url("/detail/" + cid.toString());
     }
 
     /**

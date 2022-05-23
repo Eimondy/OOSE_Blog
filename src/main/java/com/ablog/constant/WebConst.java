@@ -55,5 +55,6 @@ public class WebConst {
      */
     public static Integer MAX_FILE_SIZE = 1048576;
 
-
+    public static final String USER_SUBSCRIBE = "subscribe";
+    public static final String USER_COLLECT = "collect";
 }

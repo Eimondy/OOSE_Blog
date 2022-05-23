@@ -22,13 +22,32 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86ce77b3-a995-4904-b4c6-3a4f43402537" name="Default Changelist" comment="Default Changelist" />
+    <list default="true" id="86ce77b3-a995-4904-b4c6-3a4f43402537" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/constant/WebConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/constant/WebConst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/controller/admin/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/service/user/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/service/user/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ablog/utils/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ablog/utils/Commons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/archives.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/archives.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/fragments/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/fragments/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/layout.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +91,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -85,18 +105,17 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,6 +195,8 @@
       <workItem from="1653204695344" duration="611000" />
       <workItem from="1653205340049" duration="752000" />
       <workItem from="1653214893805" duration="11502000" />
+      <workItem from="1653281507673" duration="1504000" />
+      <workItem from="1653283048607" duration="18549000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization. Entrance and some configurations for springboot, some utility classes.">
       <created>1653142811953</created>
@@ -198,7 +219,28 @@
       <option name="project" value="LOCAL" />
       <updated>1653205407470</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="IDEA Maven dependencies.">
+      <created>1653281668367</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653281668367</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Simple front-end.">
+      <created>1653282678465</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653282678465</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Simple user system, register and login for visitor accounts.">
+      <created>1653282814411</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653282814411</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +274,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -257,7 +299,10 @@
     </ignored-roots>
     <MESSAGE value="Initialization. Entrance and some configurations for springboot, some utility classes." />
     <MESSAGE value="Initialization. Entrance and configurations for springboot, and some utility classes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialization. Entrance and configurations for springboot, and some utility classes." />
+    <MESSAGE value="IDEA Maven dependencies." />
+    <MESSAGE value="Simple front-end." />
+    <MESSAGE value="Simple user system, register and login for visitor accounts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple user system, register and login for visitor accounts." />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1653229026794">
@@ -268,10 +313,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="609" y="106" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1653204042600" />
-    <state width="418" height="466" key="DebuggerActiveHint" timestamp="1653233015205">
+    <state width="418" height="466" key="DebuggerActiveHint" timestamp="1653309133003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="418" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1653233015205" />
+    <state width="418" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1653309133003" />
     <state x="184" y="86" key="DiffContextDialog" timestamp="1653182836700">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -284,66 +329,78 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="845" y="417" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1653143992107" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1653309041953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1653233476491">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041953" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1653309041953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476491" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1653233476491">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041953" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1653309041953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476491" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1653233476491">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041953" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1653309041953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476491" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041953" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1653309124953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1653309124953" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1653309124953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1653309124953" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1653309124953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1653309124953" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1653309124953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1653309124953" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1653309041815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041815" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1653309041815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041815" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1653309041815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
-    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1653233476496">
+    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041815" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1653309041815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1653233476496" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1653309041815" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1653281766793">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1653281766793" />
+    <state x="594" y="280" key="MultipleFileMergeDialog" timestamp="1653281766802">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="594" y="280" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1653281766802" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1653205200769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1653205200769" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1653205498152">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1653283092895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1653205498152" />
-    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1653204793966">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1653283092895" />
+    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1653281693987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1653204793966" />
+    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1653281693987" />
+    <state x="685" y="100" width="549" height="840" key="find.popup" timestamp="1653303001635">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="100" width="549" height="840" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1653303001635" />
     <state x="761" y="409" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1653204788506">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -352,21 +409,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="834" y="418" key="git4idea.ui.GitStashDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1653205256749" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/ablog/controller/UserController.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/ablog/controller/UserController.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -8,7 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <link href="https://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css"/>
+<!--    <link href="https://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css"/>-->
+    <link type="text/css" th:src="@{/blog/fancybox/2.1.5/jquery.fancybox.min.css}">
     <link href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link th:href="@{/blog/css/main.css}" rel="stylesheet" type="text/css"/>
@@ -79,8 +80,10 @@
             window.Promise = null;
         }
     </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+<!--    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>-->
+<!--    <script type="text/javascript" src="https://cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>-->
+    <script type="text/javascript" th:src="@{/blog/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/blog/fastclick/1.0.6/fastclick.min.js}"></script>
     <script type="text/javascript" th:src="@{/blog/jquery.lazyload/1.9.3/jquery.lazyload.min.js}"></script>
     <script type="text/javascript" th:src="@{/blog/velocity/1.2.3/velocity.min.js}"></script>
     <script type="text/javascript" th:src="@{/blog/velocity/1.2.3/velocity.ui.min.js}"></script>
@@ -110,36 +113,78 @@
             }
         }
 
+        function subscribeClick(){
+            var uid = $("#uid").val();
+            var cid = $("#cid").val();
+            var data = {
+                "cid":cid,
+                "uid":uid
+            };
+            console.log(data);
+            $.ajax({
+                type: 'post',
+                url: '/user/subscribe',
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+                    if (result && result.code == 'success') {
+                        alert("订阅成功!");
+                        window.location.reload();
+                    } else {
+                        if (result.msg) {
+                            alert(result.msg);
+                        }
+                    }
+                }
+            });
+        }
+
+        function collectClick(){
+            var uid = $("#uid").val();
+            var cid = $("#cid").val();
+            var data = {
+                "uid":uid,
+                "cid":cid
+            };
+            console.log(data);
+            $.ajax({
+                type: 'post',
+                url: '/user/collect',
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+                    if (result && result.code == 'success') {
+                        alert("收藏成功!");
+                        window.location.reload();
+                    } else {
+                        if (result.msg) {
+                            alert(result.msg);
+                        }
+                    }
+                }
+            });
+        }
+
         function commentClick() {
             var content = $("#comment-content").val();
-            var author = $("#nickname").val();
-            var email = $("#email").val();
-            var url = $("#url").val();
-            var coid = $("#coid").val();
+            var uid = $("#uid").val();
             var cid = $("#cid").val();
             var csrf_token = $("#csrf_token").val();
 
             if (null == content || "" == content || undefined == content) {
                 alert("内容不能为空");
                 return false;
-            }
-            if (null == author || "" == author || undefined == author) {
-                alert("姓名不能为空");
-                return false;
-            }
-            if (null == email || "" == email || undefined == email) {
-                alert("邮箱不能为空");
-                return false;
-            }
+            };
 
             var data = {
                 "content": content,
-                "author":author,
-                "email": email,
-                "url": url,
-                "csrf_token": csrf_token,
-                "coid": coid,
-                "cid": cid
+                "uid":uid,
+                "cid": cid,
+                "csrf_token": csrf_token
             };
 
             console.log(data);
@@ -150,7 +195,6 @@
                 async: false,
                 dataType: 'json',
                 success: function (result) {
-                    // $('#comment-form input[name=coid]').val('');
                     if (result && result.code == 'success') {
                         alert("评论已提交至后台审核!");
                         window.location.reload();

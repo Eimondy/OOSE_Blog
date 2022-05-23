@@ -64,28 +64,33 @@
                     </div>
                 </th:block>
             </div>
-            <div class="comment-form">
-                <input type="hidden" name="coid" id="coid">
-                <input type="hidden" name="cid" id="cid" th:value="${article.cid}">
-                <input type="hidden" name="_csrf_token" id="csrf_token" th:value="${_csrf_token}">
-                <div class="field">
-                    <textarea id="comment-content" required="required" class="form-control" name="content" placeholder="请输入评论信息..." cols="30" rows="7"></textarea>
-                </div>
-                <div class="fields">
+            <th:block th:if="${session.login_user} != null and ${session.login_user.groupName} == 'visitor'">
+                <div class="comment-form">
+                    <input type="hidden" name="coid" id="coid">
+                    <input type="hidden" name="uid" id="uid" th:value="${session.login_user.uid}">
+                    <input type="hidden" name="cid" id="cid" th:value="${article.cid}">
+                    <input type="hidden" name="_csrf_token" id="csrf_token" th:value="${_csrf_token}">
                     <div class="field">
-                        <input id="nickname" required="required" type="text" name="nickname" placeholder="姓名">
+                        <textarea id="comment-content" required="required" class="form-control" name="content" placeholder="请输入评论信息..." cols="30" rows="7"></textarea>
                     </div>
-                    <div class="field">
-                        <input id="email" required="required" type="email" name="email" placeholder="邮箱">
-                    </div>
-                    <div class="field">
-                        <input id="url" type="url" name="url" placeholder="网址">
+<!--                    <div class="fields">-->
+<!--                        <div class="field">-->
+<!--                            <input id="nickname" required="required" type="text" name="nickname" placeholder="姓名">-->
+<!--                        </div>-->
+<!--                        <div class="field">-->
+<!--                            <input id="email" required="required" type="email" name="email" placeholder="邮箱">-->
+<!--                        </div>-->
+<!--                        <div class="field">-->
+<!--                            <input id="url" type="url" name="url" placeholder="网址">-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="comment-button">
+                        <button onclick="collectClick()">收藏</button>
+                        <button onclick="subscribeClick()">订阅</button>
+                        <button onclick="commentClick()">发布</button>
                     </div>
                 </div>
-                <div class="comment-button">
-                    <button onclick="commentClick()">发布</button>
-                </div>
-            </div>
+            </th:block>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerFragment(title,active)">
     <meta charset="utf-8"/>
-    <title><th:block th:text="${title!=null?title:'博客后台'}+'- The Blog'"></th:block></title>
+    <title><th:block th:text="${title!=null?title:'个人主页'}+'- The Blog'"></th:block></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta content="Coderthemes" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="pull-left" style="padding-left: 4px;">
-                <span style="font-size: 28px; color: #2f353f; line-height: 50px;">The Blog</span>
+                <span style="font-size: 28px; color: #2f353f; line-height: 50px;">Profile</span>
             </div>
         </div>
     </div>
@@ -59,12 +59,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a th:href="@{${commons.site_url()}}" target="_blank">
+                                <a th:href="@{/}" target="_blank">
                                     <i class="fa fa-eye" aria-hidden="true"></i>查看网站
                                 </a>
                             </li>
-                            <li><a th:href="@{/admin/profile}"><i class="fa fa-sun-o"></i> 个人设置</a></li>
-                            <li><a th:href="@{/admin/logout}"><i class="fa fa-sign-out"></i> 注销</a></li>
+                            <li><a th:href="@{/user/profile}"><i class="fa fa-sun-o"></i> 个人设置</a></li>
+                            <li><a th:href="@{/user/logout}"><i class="fa fa-sign-out"></i> 注销</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,47 +77,24 @@
         <div id="sidebar-menu">
             <ul>
                 <li th:class="${active}=='home'?'active':''">
-                    <a th:href="@{/admin/index}"
+                    <a th:href="@{/user/profile}"
                        th:class="${active}=='home'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-dashboard" aria-hidden="true"></i><span> 仪表盘 </span></a>
-                </li>
-                <li th:class="${active}=='publish'?'active':''">
-                    <a th:href="@{/admin/article/publish}"
-                       th:class="${active}=='publish'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-pencil-square-o" aria-hidden="true"></i><span> 发布文章 </span></a>
+                            class="fa fa-dashboard" aria-hidden="true"></i><span> 个人设置 </span></a>
                 </li>
                 <li th:class="${active}=='article'?'active':''">
-                    <a th:href="@{/admin/article}"
+                    <a th:href="@{/user/profile/collect}"
                        th:class="${active}=='article'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-list" aria-hidden="true"></i><span> 文章管理 </span></a>
+                            class="fa fa-list" aria-hidden="true"></i><span> 收藏管理 </span></a>
                 </li>
-                <!--<li th:class="${active}=='page'?'active':''">-->
-                    <!--<a th:href="@{/admin/page}" th:class="${active}=='page'?'waves-effect active':'waves-effect'"><i-->
-                            <!--class="fa fa-file-text" aria-hidden="true"></i><span> 页面管理 </span></a>-->
-                <!--</li>-->
+                <li th:class="${active}=='article'?'active':''">
+                <a th:href="@{/user/profile/subscribe}"
+                   th:class="${active}=='article'?'waves-effect active':'waves-effect'"><i
+                        class="fa fa-list" aria-hidden="true"></i><span> 订阅管理 </span></a>
+                </li>
                 <li th:class="${active}=='comments'?'active':''">
-                    <a th:href="@{/admin/comments}"
+                    <a th:href="@{/user/profile/comment}"
                        th:class="${active}=='comments'?'waves-effect active':'waves-effect'"><i
                             class="fa fa-comments" aria-hidden="true"></i><span> 评论管理 </span></a>
-                </li>
-                <li th:class="${active}=='category'?'active':''">
-                    <a th:href="@{/admin/category}"
-                       th:class="${active}=='category'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-tags" aria-hidden="true"></i><span> 分类/标签 </span></a>
-                </li>
-                <li th:class="${active}=='attach'?'active':''">
-                    <a th:href="@{/admin/attach}"
-                       th:class="${active}=='attach'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-cloud-upload" aria-hidden="true"></i><span> 文件管理 </span></a>
-                </li>
-                <li th:class="${active}=='links'?'active':''">
-                    <a th:href="@{/admin/links}" th:class="${active}=='links'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-link" aria-hidden="true"></i><span> 友链管理 </span></a>
-                </li>
-                <li th:class="${active}=='setting'?'active':''">
-                    <a th:href="@{/admin/setting}"
-                       th:class="${active}=='setting'?'waves-effect active':'waves-effect'"><i
-                            class="fa fa-gear" aria-hidden="true"></i><span> 系统设置 </span></a>
                 </li>
             </ul>
             <div class="clearfix"></div>
