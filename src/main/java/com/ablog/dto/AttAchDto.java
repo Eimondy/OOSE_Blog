@@ -1,6 +1,6 @@
 package com.ablog.dto;
 
-public class AttachmentDto extends BaseDto {
+public class AttAchDto extends BaseDto {
     /**
      * 主键编号
      */

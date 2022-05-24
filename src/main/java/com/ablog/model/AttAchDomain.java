@@ -1,7 +1,9 @@
 package com.ablog.model;
 
-
-public class AttachmentDomain {
+/**
+ * 网站图片文件相关表
+ */
+public class AttAchDomain {
 
     /**
      * 主键编号

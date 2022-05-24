@@ -1,19 +1,19 @@
-package com.ablog.service.attachment;
+package com.ablog.service.attach;
 
 import com.github.pagehelper.PageInfo;
-import com.ablog.dto.AttachmentDto;
-import com.ablog.model.AttachmentDomain;
+import com.ablog.dto.AttAchDto;
+import com.ablog.model.AttAchDomain;
 
 /**
  * 文件相关接口
  */
-public interface AttachmentService {
+public interface AttAchService {
 
     /**
      * 添加单个附件信息
-     * @param attachmentDomain
+     * @param attAchDomain
      */
-    void addAttAch(AttachmentDomain attachmentDomain);
+    void addAttAch(AttAchDomain attAchDomain);
 
     /**
      * 获取所有的附件信息
@@ -21,14 +21,14 @@ public interface AttachmentService {
      * @param pageSize
      * @return
      */
-    PageInfo<AttachmentDto> getAtts(int pageNum, int pageSize);
+    PageInfo<AttAchDto> getAtts(int pageNum, int pageSize);
 
     /**
      * 通过ID获取附件信息
      * @param id
      * @return
      */
-    AttachmentDto getAttAchById(Integer id);
+    AttAchDto getAttAchById(Integer id);
 
     /**
      * 通过ID删除附件信息

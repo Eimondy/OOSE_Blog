@@ -7,11 +7,11 @@ import com.ablog.constant.LogActions;
 import com.ablog.constant.Types;
 import com.ablog.constant.WebConst;
 import com.ablog.controller.BaseController;
-import com.ablog.dto.AttachmentDto;
+import com.ablog.dto.AttAchDto;
 import com.ablog.exception.BusinessException;
-import com.ablog.model.AttachmentDomain;
+import com.ablog.model.AttAchDomain;
 import com.ablog.model.UserDomain;
-import com.ablog.service.attachment.AttachmentService;
+import com.ablog.service.attach.AttAchService;
 import com.ablog.service.log.LogService;
 import com.ablog.utils.APIResponse;
 import com.ablog.utils.Commons;
@@ -34,14 +34,14 @@ import java.io.IOException;
 @Api("文件管理")
 @Controller
 @RequestMapping("admin/attach")
-public class AttachmentController extends BaseController {
+public class AttachController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AttachmentController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AttachController.class);
 
     public static final String CLASSPATH = TaleUtils.getUploadFilePath();
 
     @Autowired
-    private AttachmentService attachmentService;
+    private AttAchService attAchService;
 
     @Autowired
     private LogService logService;
@@ -59,7 +59,7 @@ public class AttachmentController extends BaseController {
             @RequestParam(name = "limit", required = false, defaultValue = "12")
                     int limit
     ) {
-        PageInfo<AttachmentDto> atts = attachmentService.getAtts(page, limit);
+        PageInfo<AttAchDto> atts = attAchService.getAtts(page, limit);
         request.setAttribute("attachs", atts);
         request.setAttribute(Types.ATTACH_URL.getType(),Commons.site_option(Types.ATTACH_URL.getType(), Commons.site_url()));
         request.setAttribute("max_file_size", WebConst.MAX_FILE_SIZE / 1024);
@@ -98,14 +98,14 @@ public class AttachmentController extends BaseController {
                 String fileName = TaleUtils.getFileKey(file.getOriginalFilename().replaceFirst("/", ""));
 
                 QiNiuCloudService.upload(file, fileName);
-                AttachmentDomain attachmentDomain = new AttachmentDomain();
+                AttAchDomain attAchDomain = new AttAchDomain();
                 HttpSession session = request.getSession();
                 UserDomain sessionUser = (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
-                attachmentDomain.setAuthorId(sessionUser.getUid());
-                attachmentDomain.setFtype(TaleUtils.isImage(file.getInputStream()) ? Types.IMAGE.getType() : Types.FILE.getType());
-                attachmentDomain.setFname(fileName);
-                attachmentDomain.setFkey(QiNiuCloudService.QINIU_UPLOAD_SITE + fileName);
-                attachmentService.addAttAch(attachmentDomain);
+                attAchDomain.setAuthorId(sessionUser.getUid());
+                attAchDomain.setFtype(TaleUtils.isImage(file.getInputStream()) ? Types.IMAGE.getType() : Types.FILE.getType());
+                attAchDomain.setFname(fileName);
+                attAchDomain.setFkey(QiNiuCloudService.QINIU_UPLOAD_SITE + fileName);
+                attAchService.addAttAch(attAchDomain);
             }
             return APIResponse.success();
 
@@ -127,10 +127,10 @@ public class AttachmentController extends BaseController {
                     Integer id
     ) {
         try {
-            AttachmentDto attach = attachmentService.getAttAchById(id);
+            AttAchDto attach = attAchService.getAttAchById(id);
             if (null == attach)
                 throw BusinessException.withErrorCode(ErrorConstant.Att.DELETE_ATT_FAIL + ": 文件不存在");
-            attachmentService.deleteAttAch(id);
+            attAchService.deleteAttAch(id);
             // 写入日志
             logService.addLog(LogActions.DEL_ATTACH.getAction(),this.user(request).getUsername()+"用户",request.getRemoteAddr(),this.getUid(request));
             return APIResponse.success();

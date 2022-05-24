@@ -1,27 +1,29 @@
 package com.ablog.dao;
 
-import com.ablog.dto.AttachmentDto;
-import com.ablog.model.AttachmentDomain;
+import com.ablog.dto.AttAchDto;
+import com.ablog.model.AttAchDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-
+/**
+ * 文件相关Dao接口
+ */
 @Mapper
-public interface AttachmentDao {
+public interface AttAchDao {
 
     /**
      * 添加单个附件文件
-     * @param attachmentDomain
+     * @param attAchDomain
      */
-    void addAttAch(AttachmentDomain attachmentDomain);
+    void addAttAch(AttAchDomain attAchDomain);
 
     /**
      * 获取所有的附件信息
      * @return
      */
-    List<AttachmentDto> getAtts();
+    List<AttAchDto> getAtts();
 
     /**
      * 获取附件总数
@@ -34,7 +36,7 @@ public interface AttachmentDao {
      * @param id
      * @return
      */
-    AttachmentDto getAttAchById(@Param("id") Integer id);
+    AttAchDto getAttAchById(@Param("id") Integer id);
 
     /**
      * 通过ID删除附件信息
