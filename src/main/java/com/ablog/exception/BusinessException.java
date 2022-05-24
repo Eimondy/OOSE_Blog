@@ -1,8 +1,3 @@
-/**
- * Created by IntelliJ IDEA.
- * User: Kyrie
- * DateTime: 2018/7/23 14:39
- **/
 package com.ablog.exception;
 
 import com.ablog.utils.APIResponse;

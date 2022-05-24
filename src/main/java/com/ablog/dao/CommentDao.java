@@ -1,8 +1,3 @@
-/**
- * Created by IntelliJ IDEA.
- * User: Kyrie
- * DateTime: 2018/7/31 15:42
- **/
 package com.ablog.dao;
 /**
  * @author Bowen

@@ -1,8 +1,3 @@
-/**
- * Created by IntelliJ IDEA.
- * User: Kyrie
- * DateTime: 2018/7/23 14:27
- **/
 package com.ablog.service.user.impl;
 
 import com.ablog.constant.ErrorConstant;

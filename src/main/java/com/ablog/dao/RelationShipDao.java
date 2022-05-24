@@ -1,8 +1,3 @@
-/**
- * Created by IntelliJ IDEA.
- * User: Administrator
- * DateTime: 2018/7/24 23:07
- **/
 package com.ablog.dao;
 
 /**
