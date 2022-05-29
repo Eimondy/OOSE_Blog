@@ -1,5 +1,10 @@
 package com.ablog.controller.admin;
 
+/**
+ * @author Bowen
+ * @create 2022/5/24 19:12
+ */
+
 import com.github.pagehelper.PageInfo;
 import com.ablog.constant.LogActions;
 import com.ablog.constant.Types;
@@ -20,7 +25,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -46,10 +50,10 @@ public class ArticleController extends BaseController {
             HttpServletRequest request,
             @ApiParam(name = "page", value = "页数", required = false)
             @RequestParam(name = "page", required = false, defaultValue = "1")
-            int page,
+                    int page,
             @ApiParam(name = "limit", value = "每页数量", required = false)
             @RequestParam(name = "limit", required = false, defaultValue = "15")
-            int limit
+                    int limit
     ) {
         PageInfo<ContentDomain> articles = contentService.getArticlesByCond(new ContentCond(), page, limit);
         request.setAttribute("articles",articles);
@@ -71,7 +75,7 @@ public class ArticleController extends BaseController {
     public String editArticle(
             @ApiParam(name = "cid", value = "文章编号", required = true)
             @PathVariable
-            Integer cid,
+                    Integer cid,
             HttpServletRequest request
     ) {
         ContentDomain content = contentService.getArticleById(cid);
@@ -91,34 +95,34 @@ public class ArticleController extends BaseController {
             HttpServletRequest request,
             @ApiParam(name = "cid", value = "文章主键", required = true)
             @RequestParam(name = "cid", required = true)
-            Integer cid,
+                    Integer cid,
             @ApiParam(name = "title", value = "标题", required = true)
             @RequestParam(name = "title", required = true)
-            String title,
+                    String title,
             @ApiParam(name = "titlePic", value = "标题图片", required = false)
             @RequestParam(name = "titlePic", required = false)
-            String titlePic,
+                    String titlePic,
             @ApiParam(name = "slug", value = "内容缩略名", required = false)
             @RequestParam(name = "slug", required = false)
-            String slug,
+                    String slug,
             @ApiParam(name = "content", value = "内容", required = true)
             @RequestParam(name = "content", required = true)
-            String content,
+                    String content,
             @ApiParam(name = "type", value = "文章类型", required = true)
             @RequestParam(name = "type", required = true)
-            String type,
+                    String type,
             @ApiParam(name = "status", value = "文章状态", required = true)
             @RequestParam(name = "status", required = true)
-            String status,
+                    String status,
             @ApiParam(name = "tags", value = "标签", required = false)
             @RequestParam(name = "tags", required = false)
-            String tags,
+                    String tags,
             @ApiParam(name = "categories", value = "分类", required = false)
             @RequestParam(name = "categories", required = false, defaultValue = "默认分类")
-            String categories,
+                    String categories,
             @ApiParam(name = "allowComment", value = "是否允许评论", required = true)
             @RequestParam(name = "allowComment", required = true)
-            Boolean allowComment
+                    Boolean allowComment
     ) {
         ContentDomain contentDomain = new ContentDomain();
         contentDomain.setTitle(title);
@@ -143,31 +147,31 @@ public class ArticleController extends BaseController {
     public APIResponse publishArticle(
             @ApiParam(name = "title", value = "标题", required = true)
             @RequestParam(name = "title", required = true)
-            String title,
+                    String title,
             @ApiParam(name = "titlePic", value = "标题图片", required = false)
             @RequestParam(name = "titlePic", required = false)
-            String titlePic,
+                    String titlePic,
             @ApiParam(name = "slug", value = "内容缩略名", required = false)
             @RequestParam(name = "slug", required = false)
-            String slug,
+                    String slug,
             @ApiParam(name = "content", value = "内容", required = true)
             @RequestParam(name = "content", required = true)
-            String content,
+                    String content,
             @ApiParam(name = "type", value = "文章类型", required = true)
             @RequestParam(name = "type", required = true)
-            String type,
+                    String type,
             @ApiParam(name = "status", value = "文章状态", required = true)
             @RequestParam(name = "status", required = true)
-            String status,
+                    String status,
             @ApiParam(name = "categories", value = "文章分类", required = false)
             @RequestParam(name = "categories", required = false, defaultValue = "默认分类")
-            String categories,
+                    String categories,
             @ApiParam(name = "tags", value = "文章标签", required = false)
             @RequestParam(name = "tags", required = false)
-            String tags,
+                    String tags,
             @ApiParam(name = "allowComment", value = "是否允许评论", required = true)
             @RequestParam(name = "allowComment", required = true)
-            Boolean allowComment
+                    Boolean allowComment
     ) {
         ContentDomain contentDomain = new ContentDomain();
         contentDomain.setTitle(title);
@@ -195,7 +199,7 @@ public class ArticleController extends BaseController {
     public APIResponse deleteArticle(
             @ApiParam(name = "cid", value = "文章ID", required = true)
             @RequestParam(name = "cid", required = true)
-            Integer cid,
+                    Integer cid,
             HttpServletRequest request
     ) {
         // 删除文章
